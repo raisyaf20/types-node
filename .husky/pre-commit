@@ -4,25 +4,25 @@
 echo "Styling, testing and building your project before comitting"
 
 #check prettier
-npm run check-format || {
+yarn check-format || {
     echo "Prettier chechk failed, run yarn format,add changes and try commit again";
     false;
 }
 
 
 #check eslint
-npm run check-lint || {
+yarn check-lint || {
     echo "Eslint chechk failed, make the required changes listed above,add change and try to commit again";
     false;
 }
 
 #chechk ts config
-npm run check-types || {
+yarn check-types || {
     echo "Failed type check. Make the changes required above,add change and try to commit again";
     false;
 }
 
-npm run build || {
+yarn build || {
     echo "your build failed, view the errors above";
     false;
 }
