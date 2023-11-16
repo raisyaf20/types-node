@@ -6,11 +6,10 @@
   "extends": "standard-with-typescript",
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": ["**/bundle/*", "**/node_modules/*", "**/public/*", "**/tsconfig.json"],
+  "ignorePatterns": ["**/bundle/*", "**/node_modules/*", "**/public/*"],
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": ["**/tsconfig.json"]
+    "sourceType": "module"
   },
   "rules": {}
 }
