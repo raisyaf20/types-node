@@ -1,0 +1,12 @@
+/node_modules
+
+
+#testing
+/coverage
+
+#prod
+/bundle
+/dist
+
+#misc
+DS_Store

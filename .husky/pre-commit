@@ -1,0 +1,30 @@
+#!/bin/sh
+. "$(dirname '$0')/_/husky.sh"
+
+echo "Styling, testing and building your project before comitting"
+
+#check prettier
+yarn check-format || {
+    echo "Prettier chechk failed, run yarn format,add changes and try commit again";
+    false;
+}
+
+
+#check eslint
+yarn check-lint || {
+    echo "Eslint chechk failed, make the required changes listed above,add change and try to commit again";
+    false;
+}
+
+#chechk ts config
+yarn check-types || {
+    echo "Failed type check. Make the changes required above,add change and try to commit again";
+    false;
+}
+
+yarn build || {
+    echo "your build failed, view the errors above";
+    false;
+}
+
+echo "Success Commite"
