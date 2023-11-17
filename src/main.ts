@@ -4,6 +4,9 @@ import { logger } from './utils/logger.ts'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
+// conection
+import './utils/connectDb.ts'
+
 const app: Application = express()
 const port: number = 8000
 
