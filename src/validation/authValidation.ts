@@ -10,5 +10,11 @@ const createUserValidation = (payload: UserType) => {
     role: Joi.string().required()
   }).validate(payload)
 }
+const createSessionValidation = (payload: UserType) => {
+  return Joi.object({
+    email: Joi.string().min(4).required(),
+    password: Joi.string().min(4).required()
+  }).validate(payload)
+}
 
-export { createUserValidation }
+export { createUserValidation, createSessionValidation }

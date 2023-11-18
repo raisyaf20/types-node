@@ -8,6 +8,10 @@ export interface UserType {
   role: string
 }
 
-const createUser = async (payload: UserType) => userModel.create(payload)
+const createUser = async (payload: UserType) => await userModel.create(payload)
 
-export { createUser }
+const findUserByEmail = async (email: string) => {
+  return userModel.findOne({ email })
+}
+
+export { createUser, findUserByEmail }
