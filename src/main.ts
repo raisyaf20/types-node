@@ -6,6 +6,7 @@ import cors from 'cors'
 
 // conection
 import './utils/connectDb.ts'
+import deserializeUser from './middleware/deserialized.ts'
 
 const app: Application = express()
 const port: number = 8000
@@ -17,9 +18,9 @@ app
   .use((req, res, next: NextFunction) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', '*')
-
     next()
   })
+  .use(deserializeUser)
 
 routes(app)
 

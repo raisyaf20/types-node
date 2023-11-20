@@ -5,7 +5,9 @@ import { type ProdType } from '../controllers/ProductController.ts'
 const getProductMongo = async () => {
   return productModel
     .find()
-    .then((respon) => respon)
+    .then((respon) => {
+      return respon
+    })
     .catch((err) => {
       logger.info('Cannot get data products')
       logger.error(err)

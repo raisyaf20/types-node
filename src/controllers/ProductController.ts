@@ -28,10 +28,10 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     await addProductMongo(value)
     logger.info('Success add new product')
-    res.status(201).send({ StatusCode: 201, status: true, message: 'Add data product success' })
+    return res.status(201).send({ StatusCode: 201, status: true, message: 'Add data product success' })
   } catch (e) {
-    logger.info('ERR : product-create ', e)
-    res.status(200).send({ StatusCode: 422, status: true, message: e })
+    logger.error(e)
+    return res.status(200).send({ StatusCode: 422, status: true, message: e })
   }
 }
 
@@ -41,16 +41,18 @@ const getProduct = async (req: Request, res: Response) => {
   } = req
 
   const prod: any = await getProductMongo()
+  logger.info('prod', prod)
 
   if (id) {
     const prodId = await getProductByid(id)
     if (prodId) {
-      res.status(200).send({ StatusCode: 200, status: true, message: 'Success get detail', data: prodId })
+      return res.status(200).send({ StatusCode: 200, status: true, message: 'Success get detail', data: prodId })
     } else {
-      res.status(404).send({ StatusCode: 404, status: true, message: 'Not found' })
+      logger.info('error not found')
+      return res.status(404).send({ StatusCode: 404, status: true, message: 'Not found' })
     }
   } else {
-    res.status(200).send({ StatusCode: 200, status: true, data: prod })
+    return res.status(200).send({ StatusCode: 200, status: true, data: prod })
   }
 }
 
