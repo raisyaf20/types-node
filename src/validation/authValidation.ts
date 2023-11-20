@@ -16,5 +16,10 @@ const createSessionValidation = (payload: UserType) => {
     password: Joi.string().min(4).required()
   }).validate(payload)
 }
+const refreshSessionValidation = (payload: UserType) => {
+  return Joi.object({
+    refresh: Joi.string().required()
+  }).validate(payload)
+}
 
-export { createUserValidation, createSessionValidation }
+export { createUserValidation, createSessionValidation, refreshSessionValidation }
